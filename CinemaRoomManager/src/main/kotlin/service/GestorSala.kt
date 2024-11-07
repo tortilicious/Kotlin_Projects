@@ -5,6 +5,9 @@ import model.Sala
 
 class GestorSala() {
 
+    private val PRECIO_ASIENTO_DELANTERO = 10
+    private val PRECIO_ASIENTO_TRASERO = 8
+
     fun generarSala(): Sala {
 
         println("Ingresa el número de filas:")
@@ -46,6 +49,24 @@ class GestorSala() {
                 }
             }
             println()
+        }
+    }
+
+    fun calcularPrecio(sala: Sala): Int {
+        val filas = sala.listaFilas.size
+        val asientos = sala.listaFilas[0].listaAsientos.size
+        val aforo = filas * asientos
+
+        return if (aforo <= 60) {
+            // Precio fijo para sala pequeña
+            filas * asientos * PRECIO_ASIENTO_DELANTERO
+        } else {
+            // Sala grande: calculamos por filas delanteras y traseras
+            val filasDelanteras = filas / 2
+            val filasTraseras = filas - filasDelanteras
+
+            (filasDelanteras * asientos * PRECIO_ASIENTO_DELANTERO) +
+                    (filasTraseras * asientos * PRECIO_ASIENTO_TRASERO)
         }
     }
 }
