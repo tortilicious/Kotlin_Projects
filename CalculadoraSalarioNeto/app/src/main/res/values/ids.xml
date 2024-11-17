@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="edad" type="id" />
+    <item name="salario" type="id" />
+    <item name="categoria_profesional" type="id" />
+</resources>

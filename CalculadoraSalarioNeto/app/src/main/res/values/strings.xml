@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">CalculadoraSalarioNeto</string>
+    <string name="titulo_app">Calculadora Salario Neto</string>
+    <string name="salario_bruto_titulo">Salario bruto</string>
+    <string name="salario_placeholder">25000.00</string>
+    <string name="pagas_titulo">Número de pagas</string>
+    <string name="pagas_placeholder">12 / 14 / 16</string>
+    <string name="edad_titulo">Edad</string>
+    <string name="categoria_profesional_titulo">Categoría profesional</string>
+    <string name="numero_pagas_titulo">Número de pagas</string>
+    <string name="edad_title">Edad</string>
+    <string name="edad_placeholder">35</string>
+    <string name="categoria_profesional_title">Categoría profesional</string>
+    <string name="grado_discapacidad_title">Grado de discapacidad</string>
+    <string name="estado_civil_title">Estado Civil</string>
+    <string name="numero_hijos_title">Número de hijos</string>
+    <string name="numero_hijos_placeholder">2</string>
+    <string name="button_text">Calcular</string>
+    <string name="salario_bruto_result_card">Salario Bruto</string>
+    <string name="retencion_result_card">Retención IRPF</string>
+    <string name="deducciones_result_card">Posibles deducciones</string>
+    <string name="salario_neto_result_card">Salario Neto</string>
+
+    <string-array name="pagas_array">
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+    </string-array>
+
+    <string-array name="categoria_profesional_array">
+        <item>Directores y Gerentes</item>
+        <item>Profesionales Científicos e Intelectuales</item>
+        <item>Técnicos y Ayudantes de Nivel Medio</item>
+        <item>Oficiales y Subalternos</item>
+        <item>Personal de Servicios</item>
+        <item>Obreros Especializados</item>
+        <item>Obreros No Especializados</item>
+        <item>Estudiantes en Formación</item>
+    </string-array>
+
+    <string-array name="estado_civil_array">
+        <item>Soltero</item>
+        <item>Casado</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="discapacidad_array">
+        <item>Grado 1: Nula</item>
+        <item>Grado 2: Leve</item>
+        <item>Grado 3: Moderada</item>
+        <item>Grado 4: Grave</item>
+        <item>Grado 5: Muy Grave</item>
+    </string-array>
+
+
+</resources>

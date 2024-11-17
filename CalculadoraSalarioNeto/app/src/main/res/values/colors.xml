@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="app_background">#121215</color>
+    <color name="app_title_background">#A3BCF9</color>
+    <color name="field_background">#D1D2F9</color>
+    <color name="field_text">#525252</color>
+    <color name="field_hint_text">#758A9B</color>
+    <color name="send_button">#02B988</color>
+    <color name="results_background">#373745</color>">
+</resources>

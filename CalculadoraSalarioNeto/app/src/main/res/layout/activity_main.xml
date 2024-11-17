@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:background="@color/app_background"
+    android:padding="24dp"
+    tools:context=".MainActivity">
+
+
+    <!--Titulo de la app-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/results_background"
+            android:padding="12dp"
+            android:text="@string/titulo_app"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- Salario Bruto -->
+
+    <TextView
+        android:id="@+id/salario_bruto_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/salario_bruto_titulo"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/cardview_title" />
+
+    <EditText
+        android:id="@+id/salario"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:background="@color/field_background"
+        android:hint="@string/salario_placeholder"
+        android:inputType="numberDecimal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/field_hint_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/salario_bruto_title" />
+
+
+    <!-- Número de pagas -->
+
+    <TextView
+        android:id="@+id/numero_pagas_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/numero_pagas_titulo"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/salario" />
+
+    <Spinner
+        android:id="@+id/pagas_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/field_background"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:popupBackground="@color/field_background"
+        android:entries="@array/pagas_array"
+        android:spinnerMode="dropdown"
+        android:textColor="@color/field_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/numero_pagas_title" />
+
+
+    <!-- Edad -->
+
+    <TextView
+        android:id="@+id/edad_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/edad_title"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/pagas_spinner" />
+
+    <EditText
+        android:id="@+id/edad"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:background="@color/field_background"
+        android:hint="@string/edad_placeholder"
+        android:inputType="number"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/field_hint_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/edad_title" />
+
+
+    <!-- Categoría Profesional -->
+
+    <TextView
+        android:id="@+id/categoria_profesional_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/categoria_profesional_title"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/edad" />
+
+    <Spinner
+        android:id="@+id/categoria_profesional_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/field_background"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:popupBackground="@color/field_background"
+        android:entries="@array/categoria_profesional_array"
+        android:spinnerMode="dialog"
+        android:textColor="@color/field_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/categoria_profesional_title" />
+
+
+    <!-- Grado de discapacidad -->
+
+    <TextView
+        android:id="@+id/grado_discapacidad_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/grado_discapacidad_title"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/categoria_profesional_spinner" />
+
+    <Spinner
+        android:id="@+id/grado_discapacidad_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/field_background"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:popupBackground="@color/field_background"
+        android:entries="@array/discapacidad_array"
+        android:spinnerMode="dropdown"
+        android:textColor="@color/field_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/grado_discapacidad_title" />
+
+
+    <!-- Estado civil -->
+
+    <TextView
+        android:id="@+id/estado_civil_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/estado_civil_title"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/grado_discapacidad_spinner" />
+
+    <Spinner
+        android:id="@+id/estado_civil_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/field_background"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:popupBackground="@color/field_background"
+        android:entries="@array/estado_civil_array"
+        android:spinnerMode="dropdown"
+        android:textColor="@color/field_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/estado_civil_title" />
+
+
+    <!-- Número de hijos -->
+
+    <TextView
+        android:id="@+id/numero_hijos_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/numero_hijos_title"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/estado_civil_spinner" />
+
+    <EditText
+        android:id="@+id/numero_hijos"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:background="@color/field_background"
+        android:hint="@string/numero_hijos_placeholder"
+        android:inputType="number"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/field_hint_text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/numero_hijos_title" />
+
+    <!--  Botón Enviar Datos  -->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/send_button"
+        android:padding="8dp"
+        android:text="@string/button_text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/numero_hijos"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
