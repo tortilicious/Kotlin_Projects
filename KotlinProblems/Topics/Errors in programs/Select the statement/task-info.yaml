@@ -1,0 +1,21 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: Compile-time errors may occur when a program is already started.
+  - text: Debugging can help to find compile-time errors.
+  - text: Typo in a function name is a run-time error.
+  - text: "If your program compiles successfully, there are no guarantees that it does\
+    \ not have run-time errors."
+files:
+  - name: src/Main.kt
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/11560#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 10 Dec 2024 11:27:49 UTC"
+record: -1
+selected_options:
+  - 3
+local_check: false
