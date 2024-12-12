@@ -1,0 +1,10 @@
+content:
+  - Theory
+  - Handling parsing of a string into an integer
+  - Handling string conversion errors in user input
+  - Hierarchy overview
+  - Errors and exceptions
+  - ArithmeticException
+  - Match descriptions
+  - Fix the code
+  - Handling division by zero error
