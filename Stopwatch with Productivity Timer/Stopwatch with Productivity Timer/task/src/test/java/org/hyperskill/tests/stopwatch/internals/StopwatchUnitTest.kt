@@ -13,7 +13,7 @@ open class StopwatchUnitTest<T: Activity>(clazz: Class<T>) : AbstractUnitTest<T>
         val alarmManager = activity.getSystemService<AlarmManager>()
         val shadowAlarmManager: ShadowAlarmManager = Shadows.shadowOf(alarmManager)
         shadowAlarmManager.scheduledAlarms.lastOrNull()?.also {
-            val operation = it.operation
+             val operation = it.operation
             val onAlarmListener = it.onAlarmListener
         
             if (operation != null) {

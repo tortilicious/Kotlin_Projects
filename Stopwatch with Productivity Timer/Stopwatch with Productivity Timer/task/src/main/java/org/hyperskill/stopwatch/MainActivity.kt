@@ -2,30 +2,76 @@ package org.hyperskill.stopwatch
 
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var tvTimer: TextView
+    private lateinit var btnStart: Button
+    private lateinit var btnReset: Button
+    private var isRunning = false
+    private var secondsElapsed = 0
+    private val handler = Handler(Looper.getMainLooper())
+
+    private val timerRunnable = object : Runnable {
+        override fun run() {
+            if (isRunning) {
+                updateTimerDisplay()
+                handler.postDelayed(this, 1000)
+                secondsElapsed++
+            }
+        }
+    }
+
+    private fun startTimer() {
+        if (!isRunning) {
+            isRunning = true
+            handler.post(timerRunnable)
+        }
+    }
+
+    private fun stopTimer() {
+        isRunning = false
+        secondsElapsed = 0
+        handler.removeCallbacks(timerRunnable)
+    }
+
+    private fun updateTimerDisplay() {
+        val minutes = secondsElapsed / 60
+        val seconds = secondsElapsed % 60
+        val timeString = String.format("%02d:%02d", minutes, seconds)
+        tvTimer.text = timeString
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*
-            Tests for android can not guarantee the correctness of solutions that make use of
-            mutation on "static" variables to keep state. You should avoid using those.
-            Consider "static" as being anything on kotlin that is transpiled to java
-            into a static variable. That includes global variables and variables inside
-            singletons declared with keyword object, including companion object.
-            This limitation is related to the use of JUnit on tests. JUnit re-instantiate all
-            instance variable for each test method, but it does not re-instantiate static variables.
-            The use of static variable to hold state can lead to state from one test to spill over
-            to another test and cause unexpected results.
-            Using mutation on static variables to keep state
-            is considered a bad practice anyway and no measure
-            attempting to give support to that pattern will be made.
-         */
+        // Inicializamos las vistas
+        tvTimer = findViewById(R.id.textView)
+        btnStart = findViewById(R.id.startButton)
+        btnReset = findViewById(R.id.resetButton)
 
-        var userNameTextView: View = findViewById<TextView>(R.id.userNameTextView)
+        // Configuramos el botón de inicio
+        btnStart.setOnClickListener {
+            startTimer()
+            updateTimerDisplay()
+        }
+
+
+        // Configuramos el botón de reinicio
+        btnReset.setOnClickListener {
+            stopTimer()
+            updateTimerDisplay()
+        }
+
+
     }
+
 }
