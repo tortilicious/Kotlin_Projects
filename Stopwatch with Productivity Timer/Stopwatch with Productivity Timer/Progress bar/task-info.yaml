@@ -48,6 +48,12 @@ files:
   - name: src/test/java/org/hyperskill/tests/stopwatch/Stage3UnitTest.kt
     visible: false
     learner_created: false
+  - name: src/main/res/drawable/custom_progress_bar.xml
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/27388#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 14 Dec 2024 12:33:42 UTC"
 record: -1

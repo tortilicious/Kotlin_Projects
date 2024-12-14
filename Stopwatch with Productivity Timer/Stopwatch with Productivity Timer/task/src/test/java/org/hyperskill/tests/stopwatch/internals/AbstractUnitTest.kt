@@ -67,15 +67,23 @@ abstract class AbstractUnitTest<T : Activity>(clazz: Class<T>) {
     }
 
     /**
-     * Decorate your test code with this method to ensure better error messages displayed
+     * Sets up activity for tests and ensures better error messages displayed
      * when tests are run with check button and exceptions are thrown by user implementation.
      *
      * returns a value for convenience use, like in tests that involve navigation between Activities
      */
-    fun <ReturnValue> testActivity(arguments: Intent = Intent(), savedInstanceState: Bundle = Bundle(), testCodeBlock: (Activity) -> ReturnValue): ReturnValue {
+    fun <ReturnValue> testActivity(
+        arguments: Intent = Intent(),
+        savedInstanceState: Bundle? = null,
+        testCodeBlock: (Activity) -> ReturnValue
+    ): ReturnValue {
         try {
-            activity.intent =  arguments
-            activityController.setup(savedInstanceState)
+            activity.intent = arguments
+            if (savedInstanceState == null) {
+                activityController.setup()
+            } else {
+                activityController.setup(savedInstanceState)
+            }
         } catch (ex: Exception) {
             throw AssertionError("Exception, test failed on activity creation with $ex\n${ex.stackTraceToString()}")
         }
@@ -94,16 +102,22 @@ abstract class AbstractUnitTest<T : Activity>(clazz: Class<T>) {
      */
     inline fun <reified T> Activity.findViewByString(idString: String): T {
         val id = this.resources.getIdentifier(idString, "id", this.packageName)
-        val view: View? = this.findViewById(id)
+        val maybeView: View? = this.findViewById(id)
 
+        val (expectedClass, maybeActualClass) =
+            if(T::class.java.simpleName == maybeView?.javaClass?.simpleName) {
+                T::class.java.canonicalName to maybeView?.javaClass?.canonicalName
+            } else {
+                T::class.java.simpleName to maybeView?.javaClass?.simpleName
+            }
         val idNotFoundMessage = "View with id \"$idString\" was not found"
         val wrongClassMessage = "View with id \"$idString\" is not from expected class. " +
-                "Expected ${T::class.java.simpleName} found ${view?.javaClass?.simpleName}"
+                "Expected $expectedClass found $maybeActualClass"
 
-        assertNotNull(idNotFoundMessage, view)
-        assertTrue(wrongClassMessage, view is T)
+        assertNotNull(idNotFoundMessage, maybeView)
+        assertTrue(wrongClassMessage, maybeView is T)
 
-        return view as T
+        return maybeView as T
     }
 
     /**
@@ -113,16 +127,22 @@ abstract class AbstractUnitTest<T : Activity>(clazz: Class<T>) {
      */
     inline fun <reified T> View.findViewByString(idString: String): T {
         val id = this.resources.getIdentifier(idString, "id", context.packageName)
-        val view: View? = this.findViewById(id)
+        val maybeView: View? = this.findViewById(id)
 
+        val (expectedClass, maybeActualClass) =
+            if(T::class.java.simpleName == maybeView?.javaClass?.simpleName) {
+                T::class.java.canonicalName to maybeView?.javaClass?.canonicalName
+            } else {
+                T::class.java.simpleName to maybeView?.javaClass?.simpleName
+            }
         val idNotFoundMessage = "View with id \"$idString\" was not found"
         val wrongClassMessage = "View with id \"$idString\" is not from expected class. " +
-                "Expected ${T::class.java.simpleName} found ${view?.javaClass?.simpleName}"
+                "Expected $expectedClass found $maybeActualClass"
 
-        assertNotNull(idNotFoundMessage, view)
-        assertTrue(wrongClassMessage, view is T)
+        assertNotNull(idNotFoundMessage, maybeView)
+        assertTrue(wrongClassMessage, maybeView is T)
 
-        return view as T
+        return maybeView as T
     }
 
     /**
@@ -132,16 +152,22 @@ abstract class AbstractUnitTest<T : Activity>(clazz: Class<T>) {
      */
     inline fun <reified T> Dialog.findViewByString(idString: String): T {
         val id = this.context.resources.getIdentifier(idString, "id", this.context.packageName)
-        val view: View? = this.findViewById(id)
+        val maybeView: View? = this.findViewById(id)
 
+        val (expectedClass, maybeActualClass) =
+            if(T::class.java.simpleName == maybeView?.javaClass?.simpleName) {
+                T::class.java.canonicalName to maybeView?.javaClass?.canonicalName
+            } else {
+                T::class.java.simpleName to maybeView?.javaClass?.simpleName
+            }
         val idNotFoundMessage = "View with id \"$idString\" was not found"
         val wrongClassMessage = "View with id \"$idString\" is not from expected class. " +
-                "Expected ${T::class.java.simpleName} found ${view?.javaClass?.simpleName}"
+                "Expected $expectedClass found $maybeActualClass"
 
-        assertNotNull(idNotFoundMessage, view)
-        assertTrue(wrongClassMessage, view is T)
+        assertNotNull(idNotFoundMessage, maybeView)
+        assertTrue(wrongClassMessage, maybeView is T)
 
-        return view as T
+        return maybeView as T
     }
 
     /**

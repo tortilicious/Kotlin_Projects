@@ -3,8 +3,10 @@ local
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
+drawable custom_progress_bar
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id progressBar
 id resetButton
 id startButton
 id textView

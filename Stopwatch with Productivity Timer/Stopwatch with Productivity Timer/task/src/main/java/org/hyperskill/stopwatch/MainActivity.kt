@@ -1,19 +1,26 @@
 package org.hyperskill.stopwatch
 
 import android.app.Dialog
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.DrawableCompat
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var tvTimer: TextView
     private lateinit var btnStart: Button
     private lateinit var btnReset: Button
+    private lateinit var progressBar: ProgressBar
     private var isRunning = false
     private var secondsElapsed = 0
     private val handler = Handler(Looper.getMainLooper())
@@ -23,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             if (isRunning) {
                 updateTimerDisplay()
                 handler.postDelayed(this, 1000)
+                changeProgressBarColor()
                 secondsElapsed++
             }
         }
@@ -31,12 +39,14 @@ class MainActivity : AppCompatActivity() {
     private fun startTimer() {
         if (!isRunning) {
             isRunning = true
+            progressBar.visibility = View.VISIBLE
             handler.post(timerRunnable)
         }
     }
 
     private fun stopTimer() {
         isRunning = false
+        progressBar.visibility = View.GONE
         secondsElapsed = 0
         handler.removeCallbacks(timerRunnable)
     }
@@ -48,6 +58,12 @@ class MainActivity : AppCompatActivity() {
         tvTimer.text = timeString
     }
 
+    private fun changeProgressBarColor() {
+        val color = Random.nextInt()
+        progressBar.indeterminateTintList = ColorStateList.valueOf(color)
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         tvTimer = findViewById(R.id.textView)
         btnStart = findViewById(R.id.startButton)
         btnReset = findViewById(R.id.resetButton)
+        progressBar = findViewById(R.id.progressBar)
 
         // Configuramos el botón de inicio
         btnStart.setOnClickListener {
@@ -70,7 +87,6 @@ class MainActivity : AppCompatActivity() {
             stopTimer()
             updateTimerDisplay()
         }
-
 
     }
 

@@ -8,6 +8,10 @@
         "source": "C:\\Users\\tortilicious\\.gradle\\daemon\\8.9\\org.hyperskill.stopwatch.Stopwatch_with_Productivity_Timer-task-main-34:\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\tortilicious\\.gradle\\daemon\\8.9\\org.hyperskill.stopwatch.Stopwatch_with_Productivity_Timer-task-debug-32:\\drawable_custom_progress_bar.xml.flat",
+        "source": "C:\\Users\\tortilicious\\.gradle\\daemon\\8.9\\org.hyperskill.stopwatch.Stopwatch_with_Productivity_Timer-task-main-34:\\drawable\\custom_progress_bar.xml"
+    },
+    {
         "merged": "C:\\Users\\tortilicious\\.gradle\\daemon\\8.9\\org.hyperskill.stopwatch.Stopwatch_with_Productivity_Timer-task-debug-32:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\tortilicious\\.gradle\\daemon\\8.9\\org.hyperskill.stopwatch.Stopwatch_with_Productivity_Timer-task-main-34:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
